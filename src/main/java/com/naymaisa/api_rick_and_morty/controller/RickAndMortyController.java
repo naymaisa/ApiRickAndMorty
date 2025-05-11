@@ -25,19 +25,19 @@ public class RickAndMortyController {
     RickAndMortyClient rickAndMortyClient;
 
     @GetMapping("/character/{id}")
-    public Mono<CharacterResponse> getCharacterById(@PathVariable String id){
+    public Mono<CharacterResponse> getCharacterById(@PathVariable int id){
         return rickAndMortyClient.findAndCharacterById(id);
 
     }
 
     @GetMapping("/location/{id}")
-    public Mono<LocationResponse> getLocationById(@PathVariable String id){
+    public Mono<LocationResponse> getLocationById(@PathVariable int id){
         return rickAndMortyClient.findAndLocationById(id);
 
     }
 
     @GetMapping("/episode/{id}")
-    public Mono<EpisodeResponse> getEpisodeById(@PathVariable String id){
+    public Mono<EpisodeResponse> getEpisodeById(@PathVariable int id){
         return rickAndMortyClient.findAndEpisodeById(id);
 
     }

@@ -26,39 +26,39 @@ public class RickAndMortyClient {
 
     private final WebClient webClient;
 
-    public Mono<CharacterResponse> findAndCharacterById(String id){
-        log.info("buscando o personagem com o id[{]}", id);
+    public Mono<CharacterResponse> findAndCharacterById(int id){
+        log.info("buscando o personagem com o id[{}]", id);
         return (Mono<CharacterResponse>) webClient
                 .get()
                 .uri("/character/"+id)
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
                 .onStatus(HttpStatusCode::is4xxClientError,
-                        error-> Mono.error(new RuntimeException(("verifique os parametros do personagem"))))
+                        error-> Mono.error(new RuntimeException(("verifique os parametros "))))
                 .bodyToMono(CharacterResponse.class);
     }
 
-    public Mono<LocationResponse> findAndLocationById(String id){
-        log.info("buscando o local com o id[{]}", id);
+    public Mono<LocationResponse> findAndLocationById(int id){
+        log.info("buscando o local com o id[{}]", id);
         return  webClient
                 .get()
                 .uri("/location/"+id)
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
                 .onStatus(HttpStatusCode::is4xxClientError,
-                        error-> Mono.error(new RuntimeException(("verifique os parametros do personagem"))))
+                        error-> Mono.error(new RuntimeException(("verifique os parametros "))))
                 .bodyToMono(LocationResponse.class);
     }
 
-    public Mono<EpisodeResponse> findAndEpisodeById(String id){
-        log.info("buscando o episodio com o id[{]}", id);
+    public Mono<EpisodeResponse> findAndEpisodeById(int id){
+        log.info("buscando o episodio com o id[{}]", id);
         return  webClient
                 .get()
                 .uri("/episode/"+id)
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
                 .onStatus(HttpStatusCode::is4xxClientError,
-                        error-> Mono.error(new RuntimeException(("verifique os parametros do personagem"))))
+                        error-> Mono.error(new RuntimeException(("verifique os parametros "))))
                 .bodyToMono(EpisodeResponse.class);
     }
 
@@ -70,7 +70,7 @@ public class RickAndMortyClient {
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
                 .onStatus(HttpStatusCode::is4xxClientError,
-                        error-> Mono.error(new RuntimeException(("verifique os parametros do personagem"))))
+                        error-> Mono.error(new RuntimeException(("verifique os parametros "))))
                 .bodyToFlux(AllEpisodesResponse.class);
     }
 }
